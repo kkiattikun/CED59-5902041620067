@@ -1,6 +1,9 @@
+print('------Start Calculator-------')
+x = int(input('input num1 : '))
+y = int(input('input num2 : '))
+mark = input('input Punctuation is [ + or - or * or / ] : ')
+
 class Calculator:
-  x = 0
-  y = 0
 
   def __init__(self, input_x, input_y):
     self.x = input_x
@@ -22,11 +25,18 @@ class Calculator:
     result = self.x / self.y
     print('result divide : ', result)
 
-cal = Calculator(5,10)
+cal = Calculator(x,y)
 
-print('x : ', cal.x)
-print('y : ', cal.y)
-cal.puls()
-cal.pop()
-cal.multiply()
-cal.divide()
+print('---------Process-----------')
+print(x,mark,y)
+if mark=='+' :
+  cal.puls()
+elif mark=='-' :
+  cal.pop
+elif mark=='*' :
+  cal.multiply()
+elif mark=='/' :
+  cal.divide
+else :
+  print('Error !!')
+print('-----------End-------------')
