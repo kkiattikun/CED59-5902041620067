@@ -32,11 +32,11 @@ print(x,mark,y)
 if mark=='+' :
   cal.puls()
 elif mark=='-' :
-  cal.pop
+  cal.pop()
 elif mark=='*' :
   cal.multiply()
 elif mark=='/' :
-  cal.divide
+  cal.divide()
 else :
   print('Error !!')
 print('-----------End-------------')
