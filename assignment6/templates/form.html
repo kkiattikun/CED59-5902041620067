@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <script language="JavaScript">
+        function chk() {
+            password = document.frm.txt_pwd.value ;
+            if(password.length < 8){
+                alert("... รหัสผ่านต้องมี 8 ตัวอักษรขึ้นไป ...");
+                return false ;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="frm" method="post" action="/" onsubmit="return chk()">
+        <table width="350">
+            <tr>
+                <td colspan="2" align="center">สมัครสมาชิก</td>
+            </tr>
+            <tr>
+                <td>ชื่อ :</td>
+                <td> <input type="text" name="txt_fname"  required> </td>
+            </tr>
+             <tr>
+                <td>นามสกุล : </td>
+                <td><input type="text" name="txt_lname" required> </td>
+            </tr>
+             <tr>
+                <td>อีเมล :  </td>
+                <td><input type="email" name="txt_email" size="30" required> </td>
+            </tr>
+             <tr>
+                <td>ชื่อบัญชีผู้ใช้ :</td>
+                <td><input type="text" name="txt_user" required> </td>
+            </tr>
+            <tr>
+                <td>รหัสผ่าน :</td>
+                <td> <input type="text" name="txt_pwd" required></td>
+            </tr>
+            <tr >
+                <td colspan="2" align="center"><input type="submit" name="btn_SignUp" value="กดปุ่มสมัคร"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
