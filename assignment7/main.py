@@ -1,20 +1,30 @@
 from flask import Flask, render_template, request
+from wtforms import StringField, PasswordField
+from flask_wtf import FlaskForm
+from wtforms.validators import InputRequired, Length, Email
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'any secret string'
+
+class Form(FlaskForm):
+    fname = StringField("fname", validators=[InputRequired()])
+    lname = StringField("lanme", validators=[InputRequired()])
+    email = StringField("email",  [InputRequired(""), Email("Please enter email is ______@gmail.com")])
+    username = StringField("username", validators=[InputRequired()])
+    password = PasswordField("password", validators=[InputRequired(), Length(min=8, message="Please enter password as size")])
 
 @app.route('/')
-def index():
-    return render_template('form.html')
+def SingUp():
+    form = Form()
+    return render_template('form.html', form=form)
 
-@app.route('/', methods=["post"])
+@app.route('/register', methods=["post"])
 def register():
-    fname = request.form['txt_fname']
-    lname = request.form['txt_lname']
-    email = request.form['txt_email']
-    username = request.form['txt_user']
-    password = request.form['txt_pwd']
-    return (fname+' : '+lname+' : '+email+' : '+username+' : '+password)
+    username = request.form['username']
+    form = Form()
+    if form.validate_on_submit():
+        return "Index Page!! Welcome your are " + username
+    return render_template('form.html', form=form)
 
 if __name__ == '__main__':
-    app.run()
-
+    app.run(debug=True)
