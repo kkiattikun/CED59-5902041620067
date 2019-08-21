@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms.validators import InputRequired, Length, Email
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'any secret string'
+app.config['SECRET_KEY'] = 'SecretKey'
 
 class Form(FlaskForm):
     fname = StringField("fname", validators=[InputRequired()])
