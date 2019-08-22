@@ -1,6 +1,12 @@
 from flask import Flask, render_template, request
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+
+class MyForm(FlaskForm):
+    name = StringField('name', validators=[DataRequired()])
 
 @app.route('/')
 def index():
@@ -8,12 +14,11 @@ def index():
 
 @app.route('/', methods=["post"])
 def register():
-    fname = request.form['txt_fname']
-    lname = request.form['txt_lname']
-    email = request.form['txt_email']
-    username = request.form['txt_user']
-    password = request.form['txt_pwd']
-    return (fname+' : '+lname+' : '+email+' : '+username+' : '+password)
+    form = MyForm()
+    if form.validate_on_submit():
+        return redirect('/')
+    return render_template(form=form)
+
 
 if __name__ == '__main__':
     app.run()

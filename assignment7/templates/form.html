@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <title>Form</title>
     <script language="JavaScript">
-        function chk() {
+       /* function chk() {
             password = document.frm.txt_pwd.value ;
             if(password.length < 8){
                 alert("... รหัสผ่านต้องมี 8 ตัวอักษรขึ้นไป ...");
                 return false ;
             }
-        }
+        } */
     </script>
 </head>
 <body>
     <form name="frm" method="post" action="/" onsubmit="return chk()">
+        {{ form.csrf_token }}
+        {{ form.name.label }} {{ form.name(size=20) }}
         <table width="350">
             <tr>
                 <td colspan="2" align="center">สมัครสมาชิก</td>
